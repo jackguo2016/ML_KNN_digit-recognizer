@@ -22,27 +22,26 @@ KNN算法被用于分类MNIST数据集中的手写数字图像。项目包括数
 
 ## 安装指南
 
-确保您的系统已安装Java开发环境。此外，项目依赖以下库：
-
-- JFreeChart（用于数据可视化）
+需要 JDK 和可显示 Swing 图表的桌面环境。将 [JFreeChart 1.0.19](https://repo.maven.apache.org/maven2/org/jfree/jfreechart/1.0.19/jfreechart-1.0.19.jar) 和 [JCommon 1.0.23](https://repo.maven.apache.org/maven2/org/jfree/jcommon/1.0.23/jcommon-1.0.23.jar) 下载到仓库根目录的 `lib/` 中。
 
 ## 使用方法
 
-1. 克隆仓库：
-   ```
-   git clone https://github.com/ziyan-guo/ML_KNN_digit-recognizer.git
-   ```
+```bash
+git clone https://github.com/jackguo2016/ML_KNN_digit-recognizer.git
+cd ML_KNN_digit-recognizer
+mkdir -p lib src/com/ZiyanGuo build
+```
 
-2. 进入项目目录：
-   ```
-   cd ML_KNN_digit-recognizer
-   ```
+放好两个 JAR 后，从仓库根目录执行以下命令。先把 CSV 复制到代码读取的固定路径。
 
-3. 编译并运行Main.java文件：
-   ```
-   javac Main.java
-   java Main
-   ```
+```bash
+cp ML_KNN_digit-recognizer/out/production/ML_KNN_digit-recognizer/com/ZiyanGuo/traincsv.csv src/com/ZiyanGuo/
+cp testSet.csv src/com/ZiyanGuo/
+javac -encoding UTF-8 -cp "lib/*" -d build Main.java Data.java graph.java
+java -cp "build:lib/*" com.ZiyanGuo.Main
+```
+
+Windows 的 Java 类路径分隔符为 `;`。糖尿病数据的对应实现见 [`ML_KNN`](https://github.com/jackguo2016/ML_KNN)。
 
 ## 文件结构
 
@@ -50,7 +49,7 @@ KNN算法被用于分类MNIST数据集中的手写数字图像。项目包括数
 - `Data.java`: 定义了用于存储和管理单个数据点的Data类。
 - `graph.java`: 处理错误率可视化的图表创建。
 - `testSet.csv`: 用于测试的数据集。
-- `traincsv.csv`: 用于训练的MNIST数据集。
+- [`traincsv.csv`](ML_KNN_digit-recognizer/out/production/ML_KNN_digit-recognizer/com/ZiyanGuo/traincsv.csv): 用于训练的 MNIST 数据，保存在原 IntelliJ 编译目录。
 
 ## 算法描述
 
@@ -74,9 +73,8 @@ KNN算法步骤：
 ## 性能评估
 
 项目计算并展示：
-- 不同K值下的错误率
-- 混淆矩阵
-- 整体准确率
+- K 从 1 到 19 时的错误率和准确率。
+- 一张跨多个 K 值累计的混淆矩阵。它不能直接作为某个单独 K 值的结果。
 
 ## 可视化
 
@@ -90,9 +88,13 @@ KNN算法步骤：
 
 ## 许可证
 
-本项目采用MIT许可证。详情请见[LICENSE](LICENSE)文件。
+原 README 提及 MIT 许可证，当前仓库未附对应文件。
 
 ---
+
+## 原课程报告摘录
+
+当前 Java 实现使用欧氏距离。下方保留原课程报告，其中也记录了糖尿病实验及尝试过的其他距离度量。
 
 本项目旨在通过实现KNN算法来解决手写数字识别问题，展示了机器学习在图像分类任务中的应用。通过调整K值和分析不同距离度量方法，我们可以深入理解KNN算法的工作原理及其在实际问题中的表现。
 Programming Task: For each dataset, you must create a K-NN classi_er that uses the training data to build a classi_er, and evaluate and report on the classi_er performance.
