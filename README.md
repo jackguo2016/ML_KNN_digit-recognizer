@@ -1,12 +1,18 @@
-# ML_KNN_digit-recognizer
-
-# KNN算法实现手写数字识别
+# Java KNN 手写数字识别
 
 本项目实现了基于K最近邻(K-Nearest Neighbors, KNN)算法的手写数字识别系统。通过对MNIST数据集的训练和测试，展示了KNN算法在图像分类任务中的应用。
 
 ## 项目概述
 
 KNN算法被用于分类MNIST数据集中的手写数字图像。项目包括数据预处理、模型训练、预测以及性能评估等关键步骤。同时，项目还实现了不同K值下的错误率分析和可视化。
+
+## 单次实验结果
+
+使用仓库自带 CSV 文件，以欧氏距离运行一次 **K = 1**。训练集有 1,199 条记录，测试集有 249 条，其中 **217 条预测正确（87.15%）**。图中的行是真实标签，列是预测标签，每格为样本数。此结果仅适用于仓库内这次课程数据划分。
+
+![K 为 1 时的手写数字混淆矩阵，249 条测试记录中预测正确 217 条](docs/confusion-matrix-k1.svg)
+
+复现时按下文准备 CSV，并在临时副本中将主程序的 K 循环限制为一次。刚启动的程序会从空混淆矩阵开始计数。
 
 ## 目录
 
@@ -27,8 +33,8 @@ KNN算法被用于分类MNIST数据集中的手写数字图像。项目包括数
 ## 使用方法
 
 ```bash
-git clone https://github.com/jackguo2016/ML_KNN_digit-recognizer.git
-cd ML_KNN_digit-recognizer
+git clone https://github.com/jackguo2016/java-knn-mnist.git
+cd java-knn-mnist
 mkdir -p lib src/com/ZiyanGuo build
 ```
 
@@ -41,7 +47,7 @@ javac -encoding UTF-8 -cp "lib/*" -d build Main.java Data.java graph.java
 java -cp "build:lib/*" com.ZiyanGuo.Main
 ```
 
-Windows 的 Java 类路径分隔符为 `;`。糖尿病数据的对应实现见 [`ML_KNN`](https://github.com/jackguo2016/ML_KNN)。
+Windows 的 Java 类路径分隔符为 `;`。糖尿病数据的对应实现见 [`java-knn-diabetes`](https://github.com/jackguo2016/java-knn-diabetes)。
 
 ## 文件结构
 
@@ -160,3 +166,7 @@ Accuracy around 80%
 
 For the run-time of your algorithm since the loop in the knn function, So the run-time of it will be O(N).
 ![image](https://user-images.githubusercontent.com/54688551/216176036-41cb2145-4b18-4741-95a7-97674c0eccd8.png)
+
+## Project history
+
+Former repository name: `ML_KNN_digit-recognizer`. This repository preserves the original coursework and its development history.
